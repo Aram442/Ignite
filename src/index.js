@@ -5,12 +5,21 @@ import reportWebVitals from "./reportWebVitals";
 
 //REDUX SETUP
 import { createStore } from "redux";
-const store = createStore();
+import rootReducer from "./reducer";
+// Conection Between React and Redux
+import { Provider } from "react-redux";
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+); // to store like navbar toggle = on , off exatura
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
